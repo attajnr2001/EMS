@@ -1,0 +1,50 @@
+<h1>Add Admin</h1>
+
+<form action="/admin/dashboard/<%= admin._id %>/viewElection" method="post">
+  <div>
+    <label for="firstName">First Name:</label>
+    <input type="text" id="firstName" name="firstName" required />
+  </div>
+
+  <div>
+    <label for="lastName">Last Name:</label>
+    <input type="text" id="lastName" name="lastName" required />
+  </div>
+
+  <div>
+    <label for="userName">Username:</label>
+    <input type="text" id="userName" name="userName" required />
+  </div>
+
+  <div>
+    <label for="password">Password:</label>
+    <input type="password" id="password" name="password" required />
+  </div>
+
+  <div>
+    <label for="Cpassword">Confirm Password:</label>
+    <input type="password" id="password" name="password2" required />
+  </div>
+
+  <select name="department" id="department">
+   <option value="ict">ICT</option>
+  </select>
+
+  <div>
+    <label for="phone">Phone:</label>
+    <input type="tel" id="phone" name="phone" required />
+  </div>
+
+  <div>
+    <label for="dob">Date of Birth:</label>
+    <input type="date" id="dob" name="dob" required />
+  </div>
+
+  <select name="role" id="role">
+   <option value="admin">Admin</option>
+   <option value="Supervisor">Supervisor</option>
+  </select>
+
+  <button type="submit">Submit</button>
+</form>
+<a href="/admin/dashboard/<%= admin._id %>">Dashboard</a>

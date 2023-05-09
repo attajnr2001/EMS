@@ -1,0 +1,32 @@
+<form action="/voter/<%= voter._id %>/voting" method="post">
+  <h1>President</h1>
+  <div class="president">
+    <% candidate.president.forEach(elt => { %>
+    <div class="">
+      <h1>Name: <%= elt.firstName %> <%= elt.lastName %></h1>
+      <h1>Position: <%= elt.position %></h1>
+      <img width="100px" src="<%= elt.coverImagePath %>" alt="pic" />
+
+      <input type="radio" name="presidentOption" value="<%= elt._id %>" />
+    </div>
+    <% }) %>
+  </div>
+  <input type="button" onclick="clearPresidentSelection()">Clear Selection</button>
+
+
+  <div class="secretary">
+    <% candidate.secretary.forEach(elt => { %>
+    <div class="">
+      <h1>Name: <%= elt.firstName %> <%= elt.lastName %></h1>
+      <h1>Position: <%= elt.position %></h1>
+      <img width="100px" src="<%= elt.coverImagePath %>" alt="pic" />
+
+      <input type="radio" name="secretaryOption" value="<%= elt._id %>" />
+    </div>
+    <% }) %>
+  </div>
+  <input type="button" onclick="clearSecretarySelection()">Clear Selection</button>
+  <button type="submit">Finish Vote</button>
+</form>
+
+<script src="/script.js"></script>

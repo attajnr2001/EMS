@@ -1,0 +1,45 @@
+a {
+  text-decoration: none;
+}
+
+.logo {
+  display: flex;
+  justify-content: center;
+  margin: 1em auto;
+}
+
+* {
+  font-family: "Poppins", sans-serif;
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+/*** welcome page */
+.W_welcome {
+  min-height: 90vh;
+}
+.W_welcome .welcome {
+  width: 100%;
+}
+.W_welcome .welcome .W_welcomeMssg h1 {
+  width: 80%;
+  margin: auto;
+  font-weight: 800;
+  color: #454545;
+}
+.W_welcome .welcome .W_links {
+  display: flex;
+  justify-content: center;
+  gap: 0.8em;
+  width: 80%;
+  margin: auto;
+  margin-top: 2em;
+}
+.W_welcome .welcome .W_links a {
+  border-radius: 0.1em;
+  background: #1CA1CB;
+  color: #fff;
+  padding: 0.5em 1em;
+  font-weight: 500;
+}/*# sourceMappingURL=style.css.map */

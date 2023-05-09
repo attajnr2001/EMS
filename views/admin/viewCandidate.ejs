@@ -1,0 +1,17 @@
+<h1>View Candidate</h1>
+
+<div class="">
+  <% candidates.forEach(elt => { %>
+  <div class="">
+    <h1>Name: <%= elt.firstName %> <%= elt.lastName %></h1>
+    <h1>Position: <%= elt.position %></h1>
+    <img width="100px" src="<%= elt.coverImagePath %>" alt="pic" />
+  </div>
+  <% }) %>
+</div>
+
+<form action="/admin/dashboard/<%= admin._id %>/removeAll" method="post">
+  <button type="submit">Remove all Candidate</button>
+</form>
+
+<a href="/admin/dashboard/<%= admin._id %>">Dashboard</a>

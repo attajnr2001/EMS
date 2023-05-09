@@ -1,0 +1,21 @@
+<div class="president">
+  <% candidates.president.forEach(elt => { %>
+  <div class="">
+    <h1>Name: <%= elt.firstName %> <%= elt.lastName %></h1>
+    <h1>Position: <%= elt.position %></h1>
+    <img width="100px" src="<%= elt.coverImagePath %>" alt="pic" />
+    <h1>Votes: <%= elt.votes %></h1>
+  </div>
+  <% }) %>
+</div>
+
+<div class="secretary">
+  <% candidates.secretary.forEach(elt => { %>
+  <div class="">
+    <h1>Name: <%= elt.firstName %> <%= elt.lastName %></h1>
+    <h1>Position: <%= elt.position %></h1>
+    <img width="100px" src="<%= elt.coverImagePath %>" alt="pic" />
+    <h1>Votes: <%= elt.votes %></h1>
+  </div>
+  <% }) %>
+</div>

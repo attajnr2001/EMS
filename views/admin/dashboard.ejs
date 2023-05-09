@@ -1,0 +1,58 @@
+<h1>Dashboard</h1>
+<p>Welcome <%= admin.firstName%></p>
+<a href="/admin/login" class="btn btn-secondary">Logout</a>
+
+<div
+  class="electionOngoing"
+  style="width: 20px; height: 20px; border-radius: 50%; background: red"
+></div>
+
+<%- include("../partials/messages.ejs") %>
+<h1>
+  Next Election Date:
+  <h2 class="startDate"><%= _admin.setTime.toUTCString() %></h2>
+</h1>
+<h1>
+  Next Election Date:
+  <h2 class="endDate"><%= _admin.ElectionEndDate.toUTCString() %></h2>
+</h1>
+
+<h1>Add Voters</h1>
+<form
+  action="/admin/dashboard/<%= admin._id %>/uploadVoters"
+  method="post"
+  enctype="multipart/form-data"
+>
+  <select name="dept" id="">
+    <option value="ICT">ICT</option>
+  </select>
+  <input type="file" class="filepond" name="csv-file" accept=".csv" />
+  <button type="submit">Create Voters</button>
+</form>
+
+<h1>Set Date</h1>
+<form action="/admin/dashboard/<%= admin._id %>" method="post">
+  <input
+    type="datetime-local"
+    name="electionDate"
+    value="<%= _admin.setTime.toISOString().slice(0, -8)%>"
+  />
+  <h1>End Date</h1>
+  <input
+    type="datetime-local"
+    name="ElectionEndDate"
+    value="<%= _admin.ElectionEndDate.toISOString().slice(0, -8)%>"
+  />
+  <button type="submit">set Date</button>
+</form>
+
+<div class="">
+  <a href="/admin/dashboard/<%= admin._id %>/addCandidate"
+    >Register a candidate</a
+  >
+</div>
+
+<a href="/admin/dashboard/<%= admin._id %>/viewCandidate">View Candidates</a>
+<a href="/election/results">View Election</a>
+<a href="/admin/dashboard/<%= admin._id %>/addAdmin">Add Admin</a>
+<a href="/election/stats">View Stats</a>

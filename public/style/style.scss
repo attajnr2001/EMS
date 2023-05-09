@@ -1,0 +1,56 @@
+$mainText-color: #454545;
+$button-color: #1CA1CB;
+$buttonText-color: #fff;
+$button-borr: .1em;
+$button-padding: .5em 1em;
+
+a {
+  text-decoration: none;
+  
+}
+
+.logo{
+   display: flex;
+   justify-content: center;
+   margin: 1em auto;
+}
+
+* {
+  font-family: "Poppins", sans-serif;
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+/*** welcome page */
+.W_welcome {
+   min-height: 90vh;
+  .welcome {
+    width: 100%;
+    .W_welcomeMssg {
+      h1 {
+        width: 80%;
+        margin: auto;
+        font-weight: 800;
+        color: $mainText-color;
+      }
+    }
+
+    .W_links {
+      display: flex;
+      justify-content: center;
+      gap: .8em;
+      width: 80%;
+      margin: auto;
+      margin-top: 2em;
+
+      a{
+         border-radius: $button-borr;
+         background: $button-color;
+         color: $buttonText-color;
+         padding: $button-padding;
+         font-weight: 500;
+      }
+    }
+  }
+}
+

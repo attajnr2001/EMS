@@ -1,0 +1,142 @@
+<% if (typeof errors != "undefined") { %> <% errors.forEach(function(error) {%>
+<div class="alert alert-warning alert-dismissible fade show" role="alert">
+  <%= error.msg %>
+  <button
+    type="button"
+    class="btn-close"
+    data-bs-dismiss="alert"
+    aria-label="Close"
+  ></button>
+</div>
+<% }) %> <% } %> 
+<% if (typeof loginErrors != "undefined") { %> <% loginErrors.forEach(function(error) {%>
+<div class="alert alert-danger alert-dismissible fade show" role="alert">
+  <%= error.loginErrorMsg %>
+  <button
+    type="button"
+    class="btn-close"
+    data-bs-dismiss="alert"
+    aria-label="Close"
+  ></button>
+</div>
+<% }) %> <% } %> 
+<% if (success_msg != "") { %>
+<div class="alert alert-success alert-dismissible fade show" role="alert">
+  <%= success_msg %>
+  <button
+    type="button"
+    class="btn-close"
+    data-bs-dismiss="alert"
+    aria-label="Close"
+  ></button>
+</div>
+<% } %> <% if (error_msg != "") { %>
+<div class="alert alert-warning alert-dismissible fade show" role="alert">
+  <%= error_msg %>
+  <button
+    type="button"
+    class="btn-close"
+    data-bs-dismiss="alert"
+    aria-label="Close"
+  ></button>
+</div>
+<% } %> 
+<% if (error != "") { %>
+<div class="alert alert-danger alert-dismissible fade show" role="alert">
+  <%= error %>
+  <button
+    type="button"
+    class="btn-close"
+    data-bs-dismiss="alert"
+    aria-label="Close"
+  ></button>
+</div>
+<% } %> 
+<% if (createCandidateError1 != "") { %>
+<div class="alert alert-danger alert-dismissible fade show" role="alert">
+  <%= createCandidateError1 %>
+  <button
+    type="button"
+    class="btn-close"
+    data-bs-dismiss="alert"
+    aria-label="Close"
+  ></button>
+</div>
+<% } %> 
+<% if (createCandidateError2 != "") { %>
+<div class="alert alert-danger alert-dismissible fade show" role="alert">
+  <%= createCandidateError2 %>
+  <button
+    type="button"
+    class="btn-close"
+    data-bs-dismiss="alert"
+    aria-label="Close"
+  ></button>
+</div>
+<% } %> 
+<% if (votingSuccess_msg != "") { %>
+<div class="alert alert-success alert-dismissible fade show" role="alert">
+  <%= votingSuccess_msg %>
+  <button
+    type="button"
+    class="btn-close"
+    data-bs-dismiss="alert"
+    aria-label="Close"
+  ></button>
+</div>
+<% } %> 
+<% if (votingError_msg != "") { %>
+<div class="alert alert-danger alert-dismissible fade show" role="alert">
+  <%= votingError_msg %>
+  <button
+    type="button"
+    class="btn-close"
+    data-bs-dismiss="alert"
+    aria-label="Close"
+  ></button>
+</div>
+<% } %>
+<% if (setTimeError != "") { %>
+<div class="alert alert-danger alert-dismissible fade show" role="alert">
+  <%= setTimeError %>
+  <button
+    type="button"
+    class="btn-close"
+    data-bs-dismiss="alert"
+    aria-label="Close"
+  ></button>
+</div>
+<% } %>
+<% if (createVotersError != "") { %>
+<div class="alert alert-danger alert-dismissible fade show" role="alert">
+  <%= createVotersError %>
+  <button
+    type="button"
+    class="btn-close"
+    data-bs-dismiss="alert"
+    aria-label="Close"
+  ></button>
+</div>
+<% } %>
+<% if (setTimeSuccess != "") { %>
+<div class="alert alert-success alert-dismissible fade show" role="alert">
+  <%= setTimeSuccess %>
+  <button
+    type="button"
+    class="btn-close"
+    data-bs-dismiss="alert"
+    aria-label="Close"
+  ></button>
+</div>
+<% } %>
+<% if (createCandidateSuccess != "") { %>
+<div class="alert alert-success alert-dismissible fade show" role="alert">
+  <%= createCandidateSuccess %>
+  <button
+    type="button"
+    class="btn-close"
+    data-bs-dismiss="alert"
+    aria-label="Close"
+  ></button>
+</div>
+<% } %>
