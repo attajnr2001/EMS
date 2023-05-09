@@ -34,6 +34,3 @@ const getDateTime = async () => {
  
  compareDates();
  
- 
- 
- 

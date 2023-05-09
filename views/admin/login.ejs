@@ -1,4 +1,5 @@
-<main class="l-page">
+<div class="l-page d-flex justify-content-center align-items-center">
+   
    <div class="l-login">
      <div class="logo">
         <svg xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" width="82.203" height="87.812" viewBox="0 0 82.203 87.812">
@@ -39,7 +40,7 @@
            </g>
          </svg>
      </div>
-
+     <h2 class="w-75 mx-auto text-center text-uppercase font-weight-bold">Admin Login</h2 >
     <%- include("../partials/messages.ejs") %>
     <form action="/admin/login" method="post">
       <div class="form-group mb-3">
@@ -63,8 +64,8 @@
           name="password"
         />
       </div>
-      <button type="submit" class="btn btn-primary">Submit</button>
+      <button onclick="togglePassword()" type="submit" class="btn btn-primary btn-sm">Submit</button>
     </form>
     <!-- <a href="/login" type="button" class="btn btn-sm btn-outline-success">login</a> -->
   </div>
-</main>
+</div>

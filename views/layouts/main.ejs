@@ -59,8 +59,9 @@
     <title><%- title != "undefined" ? title: "EMS App" %></title>
   </head>
   <body>
-    <div class="container-fluid">
+    <div class="container-fluid p-0">
       <%- body %>
+      <%- include("../partials/footer.ejs") %>
    </div>
     <script src="/script.js"></script>
   </body>

@@ -54,3 +54,92 @@ a {
   }
 }
 
+
+
+.l-page{
+   min-height: 80vh;
+   width: 100%;
+   
+   .l-login{
+      h2{
+         width: 80%;
+         margin: auto;
+         font-weight: 600;
+         color: $mainText-color;
+      }
+
+      form{
+         margin-top: 1em;
+         button{
+            background: $button-color;
+            border: none;
+            width: 100%;
+            border-radius: $button-borr;
+         }
+      }
+   }
+}
+
+
+/****** Dashboard **/
+
+.dashboard{
+   width: 95%;
+   margin: 1em auto;
+
+   .intro{
+      display: flex;
+      align-items: center;
+      gap: .5em;
+
+      .hello{
+         margin: 0;
+      }
+   }
+
+   .dates{
+      margin: 2em auto;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      text-align: center;
+
+      .date{
+         span{
+            font-weight: 600;
+            
+            h2{
+               background: $button-color;
+               font-size: 1em;
+               color: $buttonText-color;
+               padding: $button-padding;
+            }
+         }
+      }
+   }
+}
+
+
+.voters-list{
+   background: white;
+   color: #000;
+   border: none;
+   padding: 0;
+   margin: 0;
+}
+
+li{
+   a{
+      i{
+         font-weight: 700;
+         font-size: 1.3em;
+         margin-right: .5em;
+      }
+   }
+}
+
+form{
+  .filepond{
+    height: 2em;
+  }
+}

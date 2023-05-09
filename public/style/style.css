@@ -42,4 +42,72 @@ a {
   color: #fff;
   padding: 0.5em 1em;
   font-weight: 500;
+}
+
+.l-page {
+  min-height: 80vh;
+  width: 100%;
+}
+.l-page .l-login h2 {
+  width: 80%;
+  margin: auto;
+  font-weight: 600;
+  color: #454545;
+}
+.l-page .l-login form {
+  margin-top: 1em;
+}
+.l-page .l-login form button {
+  background: #1CA1CB;
+  border: none;
+  width: 100%;
+  border-radius: 0.1em;
+}
+
+/****** Dashboard **/
+.dashboard {
+  width: 95%;
+  margin: 1em auto;
+}
+.dashboard .intro {
+  display: flex;
+  align-items: center;
+  gap: 0.5em;
+}
+.dashboard .intro .hello {
+  margin: 0;
+}
+.dashboard .dates {
+  margin: 2em auto;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  text-align: center;
+}
+.dashboard .dates .date span {
+  font-weight: 600;
+}
+.dashboard .dates .date span h2 {
+  background: #1CA1CB;
+  font-size: 1em;
+  color: #fff;
+  padding: 0.5em 1em;
+}
+
+.voters-list {
+  background: white;
+  color: #000;
+  border: none;
+  padding: 0;
+  margin: 0;
+}
+
+li a i {
+  font-weight: 700;
+  font-size: 1.3em;
+  margin-right: 0.5em;
+}
+
+form .filepond {
+  height: 2em;
 }/*# sourceMappingURL=style.css.map */
