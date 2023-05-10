@@ -8,7 +8,7 @@ const mongoose = require("mongoose");
 const passport = require("passport");
 const app = express();
 
-// require("./config/passport-v")(passport);
+
 require("./config/passport")(passport);
 app.set("view engine", "ejs");
 app.set("layout", "./layouts/main.ejs");
@@ -47,6 +47,7 @@ app.use((req, res, next) => {
   res.locals.setTimeError = req.flash("setTimeError");
   res.locals.setTimeSuccess = req.flash("setTimeSuccess");
   res.locals.createVotersError = req.flash("createVotersError");
+  res.locals.createVotersSuccess = req.flash("createVotersSuccess");
   res.locals.votingSuccess_msg = req.flash("votingSuccess_msg");
   res.locals.votingError_msg = req.flash("votingError_msg");
   res.locals.createCandidateError1 = req.flash("createCandidateError1");
@@ -62,53 +63,3 @@ app.use("/", require("./server/electionRoutes"));
 app.listen(port, () => {
   console.log("running on port", port);
 });
-
-// const express = require("express");
-// const app = express();
-// const flash = require("connect-flash");
-// const session = require("express-session");
-
-// app.set("view engine", "ejs");
-// app.use(express.urlencoded({ extended: true, limit: "10mb" }));
-
-// app.use(
-//   session({
-//     secret: "secret",
-//     resave: true,
-//     saveUninitialized: true,
-//   })
-// );
-
-// app.use(flash());
-// app.use((req, res, next) => {
-//   res.locals.success_msg = req.flash("success_msg");
-//   next();
-// });
-
-// app.get("/", (req, res) => {
-//   res.render("form");
-// });
-
-// app.get("/goto", (req, res) => {
-//   res.render("goto");
-// });
-
-// app.post("/", (req, res) => {
-//   const { username } = req.body;
-//   const errors = [];
-
-//   if (username.length < 6) {
-//     errors.push({ msg: "asshole" });
-//   }
-
-//   if (errors.length > 0) {
-//     res.render("form", { errors });
-//   } else {
-//     req.flash("success_msg", "Registration successful");
-//     res.redirect("/goto");
-//   }
-// });
-
-// app.listen(3000, () => {
-//   console.log("running on port", 3000);
-// });

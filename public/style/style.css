@@ -1,113 +1,169 @@
+* {
+  color: #333;
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+  font-family: poppins;
+}
+
+ul {
+  list-style-type: none;
+}
+
+svg {
+  width: 50px;
+  height: 50px;
+}
+
 a {
   text-decoration: none;
 }
 
-.logo {
-  display: flex;
-  justify-content: center;
-  margin: 1em auto;
-}
-
-* {
-  font-family: "Poppins", sans-serif;
-  margin: 0;
-  padding: 0;
-  box-sizing: border-box;
-}
-
-/*** welcome page */
-.W_welcome {
-  min-height: 90vh;
-}
-.W_welcome .welcome {
-  width: 100%;
-}
-.W_welcome .welcome .W_welcomeMssg h1 {
-  width: 80%;
-  margin: auto;
-  font-weight: 800;
-  color: #454545;
-}
-.W_welcome .welcome .W_links {
-  display: flex;
-  justify-content: center;
-  gap: 0.8em;
-  width: 80%;
-  margin: auto;
-  margin-top: 2em;
-}
-.W_welcome .welcome .W_links a {
-  border-radius: 0.1em;
-  background: #1CA1CB;
-  color: #fff;
-  padding: 0.5em 1em;
-  font-weight: 500;
-}
-
-.l-page {
-  min-height: 80vh;
-  width: 100%;
-}
-.l-page .l-login h2 {
-  width: 80%;
-  margin: auto;
-  font-weight: 600;
-  color: #454545;
-}
-.l-page .l-login form {
-  margin-top: 1em;
-}
-.l-page .l-login form button {
-  background: #1CA1CB;
-  border: none;
-  width: 100%;
-  border-radius: 0.1em;
-}
-
-/****** Dashboard **/
-.dashboard {
-  width: 95%;
-  margin: 1em auto;
-}
-.dashboard .intro {
-  display: flex;
-  align-items: center;
-  gap: 0.5em;
-}
-.dashboard .intro .hello {
-  margin: 0;
-}
-.dashboard .dates {
-  margin: 2em auto;
+/******** Welcome */
+.main {
+  min-height: 75vh;
   display: flex;
   justify-content: center;
   align-items: center;
   text-align: center;
+  width: 100%;
 }
-.dashboard .dates .date span {
-  font-weight: 600;
+.main .main-container .logo {
+  margin: 1em auto;
 }
-.dashboard .dates .date span h2 {
-  background: #1CA1CB;
-  font-size: 1em;
+.main .main-container .welcome-info h1 {
+  font-weight: 800;
+  text-transform: uppercase;
+  font-size: 2.5em;
+}
+.main .main-container .welcome-info .buttons {
+  margin: 1em auto;
+}
+.main .main-container .welcome-info .buttons a {
+  background: #5cb8c2;
+  padding: 0.5em 1em;
   color: #fff;
+  border-radius: 0.3em;
+}
+
+/******** admin login */
+.heading {
+  color: #b10000;
+}
+
+.form form div {
+  margin: 1em auto;
+  text-align: left;
+}
+.form form div label {
+  font-size: 0.8em;
+  font-weight: bold;
+}
+.form form button {
+  background: #5cb8c2;
+  padding: 0.5em 1em;
+  border-radius: 0.3em;
+  width: 100%;
+  color: #fff;
+  outline: none;
+  border: none;
+}
+
+/******* admin dashboard  */
+.bar {
+  display: flex;
+  justify-content: space-between;
+  box-shadow: 0 0 10px #333;
+  padding: 0.5em;
+}
+.bar .logo svg {
+  width: 30px;
+  height: 30px;
+}
+.bar .menu {
+  font-size: 1.3em;
+  font-weight: 800;
+  color: #000;
+}
+.bar .menu-list {
+  z-index: 2;
+  position: fixed;
+  top: 0;
+  right: -100%;
+  transition: 0.3s all;
+  background: #333;
+  height: 100vh;
+  width: 70%;
   padding: 0.5em 1em;
 }
+.bar .menu-list .bi-x-square-fill {
+  color: #fff;
+  float: right;
+}
+.bar .menu-list ul {
+  margin: 3em auto;
+}
+.bar .menu-list ul li {
+  line-height: 2.2em;
+}
+.bar .menu-list ul li a {
+  color: #fff;
+}
+.bar .menu-list ul li a i {
+  color: #fff;
+  position: relative;
+  left: -0.5em;
+}
 
-.voters-list {
-  background: white;
-  color: #000;
-  border: none;
-  padding: 0;
+.dashboard {
+  min-height: 70vh;
+}
+.dashboard .sm .intro {
+  margin: 1em auto;
+  width: 90%;
+  display: flex;
+  align-items: center;
+  gap: 0.3em;
+}
+.dashboard .sm .intro p {
   margin: 0;
+  color: #b10000;
+  font-weight: 500;
 }
-
-li a i {
-  font-weight: 700;
-  font-size: 1.3em;
-  margin-right: 0.5em;
+.dashboard .sm .content {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  z-index: 1;
+  min-height: 50vh;
+  text-align: center;
+  position: relative;
+  top: 3em;
 }
-
-form .filepond {
-  height: 2em;
+.dashboard .sm .content .dates .date span h2 {
+  z-index: 1;
+  background: #5cb8c2;
+  font-size: 1em;
+  color: #fff;
+  padding: 0.5em;
+  width: -moz-fit-content;
+  width: fit-content;
+  margin: auto;
+  margin-bottom: 1em;
+  border-radius: 0.3em;
+}
+.dashboard .sm .content .dates .date .set {
+  display: none;
+  margin: 1em auto;
+  position: relative;
+}
+.dashboard .sm .content .dates .date .set p {
+  margin: 0;
+  color: #b10000;
+}
+.dashboard .sm .content .dates .date .set input {
+  width: -moz-fit-content;
+  width: fit-content;
+  margin: auto;
 }/*# sourceMappingURL=style.css.map */

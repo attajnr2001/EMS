@@ -1,145 +1,204 @@
-$mainText-color: #454545;
-$button-color: #1CA1CB;
-$buttonText-color: #fff;
-$button-borr: .1em;
-$button-padding: .5em 1em;
-
-a {
-  text-decoration: none;
-  
-}
-
-.logo{
-   display: flex;
-   justify-content: center;
-   margin: 1em auto;
-}
+$color1: #333;
+$color2: #b10000;
+$color3: #4554e3;
+$color4: #5cb8c2;
 
 * {
-  font-family: "Poppins", sans-serif;
+  color: $color1;
   margin: 0;
   padding: 0;
   box-sizing: border-box;
+  font-family: poppins;
 }
-/*** welcome page */
-.W_welcome {
-   min-height: 90vh;
-  .welcome {
-    width: 100%;
-    .W_welcomeMssg {
-      h1 {
-        width: 80%;
-        margin: auto;
-        font-weight: 800;
-        color: $mainText-color;
-      }
+
+ul {
+  list-style-type: none;
+}
+svg {
+  width: 50px;
+  height: 50px;
+}
+
+a {
+  text-decoration: none;
+}
+
+/******** Welcome */
+.main {
+  min-height: 75vh;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  text-align: center;
+  width: 100%;
+
+  .main-container {
+    .logo {
+      margin: 1em auto;
     }
 
-    .W_links {
-      display: flex;
-      justify-content: center;
-      gap: .8em;
-      width: 80%;
-      margin: auto;
-      margin-top: 2em;
+    .welcome-info {
+      h1 {
+        font-weight: 800;
+        text-transform: uppercase;
+        font-size: 2.5em;
+      }
 
-      a{
-         border-radius: $button-borr;
-         background: $button-color;
-         color: $buttonText-color;
-         padding: $button-padding;
-         font-weight: 500;
+      .buttons {
+        margin: 1em auto;
+        a {
+          background: $color4;
+          padding: 0.5em 1em;
+          color: #fff;
+          border-radius: 0.3em;
+        }
       }
     }
   }
 }
 
-
-
-.l-page{
-   min-height: 80vh;
-   width: 100%;
-   
-   .l-login{
-      h2{
-         width: 80%;
-         margin: auto;
-         font-weight: 600;
-         color: $mainText-color;
-      }
-
-      form{
-         margin-top: 1em;
-         button{
-            background: $button-color;
-            border: none;
-            width: 100%;
-            border-radius: $button-borr;
-         }
-      }
-   }
+/******** admin login */
+.heading {
+  color: $color2;
 }
 
+.form {
+  form {
+    div {
+      margin: 1em auto;
+      text-align: left;
+      label {
+        font-size: 0.8em;
+        font-weight: bold;
+      }
+    }
 
-/****** Dashboard **/
+    button {
+      background: $color4;
+      padding: 0.5em 1em;
+      border-radius: 0.3em;
+      width: 100%;
+      color: #fff;
+      outline: none;
+      border: none;
+    }
+  }
+}
 
-.dashboard{
-   width: 95%;
-   margin: 1em auto;
+/******* admin dashboard  */
 
-   .intro{
+.bar {
+  display: flex;
+  justify-content: space-between;
+  box-shadow: 0 0 10px $color1;
+  padding: 0.5em;
+
+  .logo {
+    svg {
+      width: 30px;
+      height: 30px;
+    }
+  }
+
+  .menu {
+    font-size: 1.3em;
+    font-weight: 800;
+    color: #000;
+  }
+
+  .menu-list {
+    z-index: 2;
+    position: fixed;
+    top: 0;
+    right: -100%;
+    transition: 0.3s all;
+    background: $color1;
+    height: 100vh;
+    width: 70%;
+    padding: 0.5em 1em;
+
+    .bi-x-square-fill {
+      color: #fff;
+      float: right;
+    }
+
+    ul {
+      margin: 3em auto;
+      li {
+        line-height: 2.2em;
+        a {
+          color: #fff;
+
+          i {
+            color: #fff;
+            position: relative;
+            left: -0.5em;
+          }
+        }
+      }
+    }
+  }
+}
+.dashboard {
+  min-height: 70vh;
+  .sm {
+    .intro {
+      margin: 1em auto;
+      width: 90%;
       display: flex;
       align-items: center;
-      gap: .5em;
+      gap: 0.3em;
 
-      .hello{
-         margin: 0;
+      p {
+        margin: 0;
+        color: $color2;
+        font-weight: 500;
       }
-   }
+    }
 
-   .dates{
-      margin: 2em auto;
+    .content {
       display: flex;
+      flex-direction: column;
       justify-content: center;
       align-items: center;
+      z-index: 1;
+      min-height: 50vh;
       text-align: center;
+      position: relative;
+      top: 3em;
 
-      .date{
-         span{
-            font-weight: 600;
-            
-            h2{
-               background: $button-color;
-               font-size: 1em;
-               color: $buttonText-color;
-               padding: $button-padding;
+      .dates {
+        .date {
+          span {
+            h2 {
+              z-index: 1;
+              background: $color4;
+              font-size: 1em;
+              color: #fff;
+              padding: 0.5em;
+              width: fit-content;
+              margin: auto;
+              margin-bottom: 1em;
+              border-radius: 0.3em;
             }
-         }
+          }
+
+          .set {
+            display: none;
+            margin: 1em auto;
+            position: relative;
+            p {
+              margin: 0;
+              color: $color2;
+            }
+
+            input {
+              width: fit-content;
+              margin: auto;
+            }
+          }
+        }
       }
-   }
-}
-
-
-.voters-list{
-   background: white;
-   color: #000;
-   border: none;
-   padding: 0;
-   margin: 0;
-}
-
-li{
-   a{
-      i{
-         font-weight: 700;
-         font-size: 1.3em;
-         margin-right: .5em;
-      }
-   }
-}
-
-form{
-  .filepond{
-    height: 2em;
+    }
   }
 }

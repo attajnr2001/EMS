@@ -118,6 +118,17 @@
   ></button>
 </div>
 <% } %>
+<% if (createVotersSuccess  != "") { %>
+<div class="alert alert-success alert-dismissible fade show" role="alert">
+  <%= createVotersSuccess %>
+  <button
+    type="button"
+    class="btn-close"
+    data-bs-dismiss="alert"
+    aria-label="Close"
+  ></button>
+</div>
+<% } %>
 <% if (setTimeSuccess != "") { %>
 <div class="alert alert-success alert-dismissible fade show" role="alert">
   <%= setTimeSuccess %>
