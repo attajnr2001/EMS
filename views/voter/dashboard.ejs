@@ -1,20 +1,31 @@
-<h1>Dashboard</h1>
-<%- include("../partials/messages.ejs") %>
-<a href="/voter/login" class="btn btn-secondary">Logout</a>
-<div
- class="electionOngoing"
- style="width: 20px; height: 20px; border-radius: 50%; background: red"
-></div>
-<h1>
-   Next Election Date:
-   <h2 class="startDate"><%= _admin.setTime.toUTCString() %></h2>
- </h1>
- <h1>
-   Next Election Date:
-   <h2 class="endDate"><%= _admin.ElectionEndDate.toUTCString() %></h2>
- </h1>
+<%- include("../partials/navbar2.ejs") %>
 
+<div class="dashboard">
+  <div class="sm">
+    <div class="intro">
+      <div
+        class="electionOngoing"
+        style="width: 8px; height: 8px; border-radius: 50%; background: red"
+      ></div>
+    </div>
 
-<a href="/voter/<%= voter._id %>/voting">Start Voting</a>
-<a href="/election/results">Election Results</a>
-<a href="/election/stats">See Stats</a>
+    <%- include("../partials/messages.ejs") %>
+
+    <div class="content">
+      <div class="dates">
+        <div class="date">
+          <span>
+            Election Starts On
+            <h2 class="startDate"><%= _admin.setTime.toUTCString() %></h2>
+          </span>
+
+          <span>
+            Election Ends On
+            <h2 class="endDate"><%= _admin.ElectionEndDate.toUTCString() %></h2>
+          </span>
+          <a class="btn btn-primary" href="/voter/<%= voter._id %>/voting">Start Voting</a>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>

@@ -1,21 +1,39 @@
-<div class="president">
-  <% candidates.president.forEach(elt => { %>
-  <div class="">
-    <h1>Name: <%= elt.firstName %> <%= elt.lastName %></h1>
-    <h1>Position: <%= elt.position %></h1>
-    <img width="100px" src="<%= elt.coverImagePath %>" alt="pic" />
-    <h1>Votes: <%= elt.votes %></h1>
-  </div>
-  <% }) %>
-</div>
+<script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
 
-<div class="secretary">
-  <% candidates.secretary.forEach(elt => { %>
-  <div class="">
-    <h1>Name: <%= elt.firstName %> <%= elt.lastName %></h1>
-    <h1>Position: <%= elt.position %></h1>
-    <img width="100px" src="<%= elt.coverImagePath %>" alt="pic" />
-    <h1>Votes: <%= elt.votes %></h1>
+<div class="big">
+  <div class="sm">
+    <div class="president">
+      <h1>President</h1>
+      <div class="position">
+        <% candidates.president.forEach(elt => { %>
+        <div class="">
+          <h1><%= elt.firstName %> <%= elt.lastName %></h1>
+          <img width="100px" src="<%= elt.coverImagePath %>" alt="pic" />
+          <h1 class="m-3">
+            <p class="votes"><%= elt.votes %></p>
+            Votes
+          </h1>
+        </div>
+        <% }) %>
+      </div>
+    </div>
+
+    <hr />
+
+    <div class="secretary">
+      <h1>Secretary</h1>
+      <div class="position">
+        <% candidates.secretary.forEach(elt => { %>
+        <div class="">
+          <h1><%= elt.firstName %> <%= elt.lastName %></h1>
+          <img src="<%= elt.coverImagePath %>" alt="pic" />
+          <h1 class="m-3">
+            <p class="votes"><%= elt.votes %></p>
+            Votes
+          </h1>
+        </div>
+        <% }) %>
+      </div>
+    </div>
   </div>
-  <% }) %>
 </div>

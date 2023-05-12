@@ -1,61 +1,69 @@
-<h1>New Candidate</h1>
+<%- include("../partials/navbar.ejs") %>
 
-<%- include("../partials/messages.ejs") %>
-<form action="/admin/dashboard/<%= admin._id %>/addCandidate" method="post">
-  <div class="">
-    <select name="position">
-      <option value="president">President</option>
-      <option value="secretary">Secretary</option>
-    </select>
+<div class="addCandidate">
+  <div class="sm">
+    <span>New Candidate</span>
+    <%- include("../partials/messages.ejs") %>
+    <form action="/admin/dashboard/<%= admin._id %>/addCandidate" method="post">
+      <div class="">
+        <label for="">Position</label>
+        <select name="position" class="form-control">
+          <option value="president">President</option>
+          <option value="secretary">Secretary</option>
+        </select>
+      </div>
+
+      <div class="">
+        <label for="name">Voter</label>
+        <select name="voter" id="voter" class="form-control">
+          <% voters.forEach(voter => {%> <% if (voter.id == candidate.voter) {
+          %>
+          <option
+            selected
+            label="<%= voter.INDEX %>"
+            value="<%= voter.id %>"
+          ></option>
+          <% } else {%>
+          <option label="<%= voter.INDEX %>" value="<%= voter.id %>"></option>
+          <% } %> <% }) %>
+        </select>
+      </div>
+
+      <div class="">
+        <label for="firstName">first Name</label>
+        <input
+          required
+          type="text"
+          name="firstName"
+          value="<%= candidate.firstName %>"
+          class="form-control"
+        />
+      </div>
+
+      <div class="">
+        <label for="lastName">Last Name</label>
+        <input
+          required
+          type="text"
+          name="lastName"
+          value="<%= candidate.firstName %>"
+          class="form-control"
+        />
+      </div>
+
+      <div class="">
+        <label for="">Department</label>
+        <select name="department" class="form-control">
+          <option value="ict">ICT</option>
+        </select>
+      </div>
+
+      <div class="">
+        <label for="coverImageName">Cover Image</label>
+        <input type="file" name="cover" class="filepond" />
+      </div>
+
+      <button class="btn btn-primary " type="submit">Add Candidate</button>
+    </form>
   </div>
-
-  <div class="">
-    <label for="name">Voter</label>
-    <select name="voter" id="voter">
-      <% voters.forEach(voter => {%> <% if (voter.id == candidate.voter) { %>
-      <option
-        selected
-        label="<%= voter.INDEX %>"
-        value="<%= voter.id %>"
-      ></option>
-      <% } else {%>
-      <option label="<%= voter.INDEX %>" value="<%= voter.id %>"></option>
-      <% } %> <% }) %>
-    </select>
-  </div>
-
-  <div class="">
-    <label for="firstName">first Name</label>
-    <input
-      required
-      type="text"
-      name="firstName"
-      value="<%= candidate.firstName %>"
-    />
-  </div>
-
-  <div class="">
-    <label for="lastName">Last Name</label>
-    <input
-      required
-      type="text"
-      name="lastName"
-      value="<%= candidate.firstName %>"
-    />
-  </div>
-
-  <div class="">
-    <select name="department">
-      <option value="ict">ICT</option>
-    </select>
-  </div>
-
-  <div class="">
-    <label for="coverImageName">Cover Image</label>
-    <input type="file" name="cover" class="filepond" />
-  </div>
-
-  <button type="submit">Add Candidate</button>
-</form>
-
-<a href="/admin/dashboard/<%= admin._id %>">Dashboard</a>
+</div>

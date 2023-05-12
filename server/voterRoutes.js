@@ -3,6 +3,7 @@ const router = express.Router();
 const Admin = require("../models/Admin");
 const Voter = require("../models/Voter");
 const passport = require("passport");
+const axios = require("axios");
 const Candidate = require("../models/Candidate");
 const { ensureAuthenticated } = require("../config/2-auth");
 
@@ -33,8 +34,21 @@ router.get("/voter/dashboard/:_id", ensureAuthenticated, async (req, res) => {
     const admin = await Admin.find({});
     const _admin = await Admin.findOne({ role: "Supervisor" });
 
+    //      // get current date and time from worldtimeapi
+    //  const response = await axios.get(
+    //    "http://worldtimeapi.org/api/timezone/Africa/Accra"
+    //  );
+    //  const { datetime } = response.data;
+
+    //  // log whether the set election date matches the current date
+    //  console.log(
+    //    `Current date and time: ${
+    //      datetime.split("T")[0] == setTime.split("T")[0]
+    //    }`
+    //  );
+
     res.render("voter/dashboard", {
-      title: "Voting Votes",
+      title: "EMS Voting",
       admin: admin,
       _admin: _admin,
       voter: voter,

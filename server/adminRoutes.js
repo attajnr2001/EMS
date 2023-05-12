@@ -195,12 +195,14 @@ router.get(
   async (req, res) => {
     try {
       const id = req.params._id;
-      const candidates = await Candidate.find({}).sort({ position: "asc" });
+      const president = await Candidate.find({position: "president"});
+      const secretary = await Candidate.find({position: "secretary"});
       const admin = await Admin.findOne({ _id: id });
       res.render("admin/viewCandidate", {
         title: "Node App View Candidate",
         admin: admin,
-        candidates: candidates,
+        president: president,
+        secretary: secretary,
       });
     } catch (error) {
       console.log(error);

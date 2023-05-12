@@ -36,16 +36,17 @@ const compareDates = async () => {
 };
 compareDates();
 
-/**** show hide menu */
-const menu = document.querySelector(".menu-list");
-const closeBtn = document.querySelector(".bi-x-square-fill");
-const openBtn = document.querySelector(".bi-list");
+/******* show / close nav bar*/
+let closeBtn = document.querySelector(".bi-x-square-fill");
+let openBtn = document.querySelector(".bi-list");
+let menu = document.querySelector(".menuList");
 
 closeBtn.addEventListener("click", () => {
   menu.style.right = "-100%";
 });
+
 openBtn.addEventListener("click", () => {
-  menu.style.right = "0";
+  menu.style.right = "0%";
 });
 
 /***** show set date */
@@ -56,7 +57,38 @@ showDateBtn.addEventListener("click", () => {
   set.style.display = "block";
 });
 
-function showAddVotersForm() {
+function showVotersForm() {
   const addVotersForm = document.querySelector(".addVotersForm");
   addVotersForm.style.display = "block";
 }
+
+function showSetDate() {
+  const showDate = document.querySelector(".set");
+  showDate.style.display = "block";
+}
+
+let notVoted = document.querySelector(".notVoted").textContent;
+let voted = document.querySelector(".voted").textContent;
+const ctx = document.getElementById("myChart");
+new Chart(ctx, {
+  type: "pie",
+  data: {
+    labels: [`${notVoted} Not Voted`, `${voted} Voted`],
+
+    datasets: [
+      {
+        label: "# of Votes",
+        data: [notVoted, voted],
+        borderWidth: 1,
+      },
+    ],
+  },
+  options: {
+    plugins: {},
+    scales: {
+      y: {
+        beginAtZero: true,
+      },
+    },
+  },
+});

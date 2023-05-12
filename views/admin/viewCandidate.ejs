@@ -1,17 +1,34 @@
-<h1>View Candidate</h1>
+<%- include("../partials/navbar.ejs") %>
 
-<div class="">
-  <% candidates.forEach(elt => { %>
-  <div class="">
-    <h1>Name: <%= elt.firstName %> <%= elt.lastName %></h1>
-    <h1>Position: <%= elt.position %></h1>
-    <img width="100px" src="<%= elt.coverImagePath %>" alt="pic" />
+<div class="big">
+  <div class="sm">
+    <h1 class="title">Candidates</h1>
+
+
+    <h1>President</h1>
+    <div class="position">
+      <% president.forEach(elt => { %>
+      <div class="">
+        <img width="100px" src="<%= elt.coverImagePath %>" alt="pic" />
+        <h1><%= elt.firstName %> <br> <%= elt.lastName %></h1>
+      </div>
+      <% }) %>
+    </div>
+
+    <hr>
+
+    <h1>Secretary</h1>
+    <div class="position">
+      <% secretary.forEach(elt => { %>
+      <div class="">
+        <img width="100px" src="<%= elt.coverImagePath %>" alt="pic" />
+        <h1><%= elt.firstName %> <br> <%= elt.lastName %></h1>
+      </div>
+      <% }) %>
+    </div>
+    
+    <form action="/admin/dashboard/<%= admin._id %>/removeAll" method="post">
+      <button class="btn btn-primary" type="submit">Remove all Candidate</button>
+    </form>    
   </div>
-  <% }) %>
 </div>
-
-<form action="/admin/dashboard/<%= admin._id %>/removeAll" method="post">
-  <button type="submit">Remove all Candidate</button>
-</form>
-
-<a href="/admin/dashboard/<%= admin._id %>">Dashboard</a>

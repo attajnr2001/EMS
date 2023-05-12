@@ -1,32 +1,48 @@
-<form action="/voter/<%= voter._id %>/voting" method="post">
-  <h1>President</h1>
-  <div class="president">
-    <% candidate.president.forEach(elt => { %>
-    <div class="">
-      <h1>Name: <%= elt.firstName %> <%= elt.lastName %></h1>
-      <h1>Position: <%= elt.position %></h1>
-      <img width="100px" src="<%= elt.coverImagePath %>" alt="pic" />
+<%- include("../partials/navbar2.ejs") %>
 
-      <input type="radio" name="presidentOption" value="<%= elt._id %>" />
-    </div>
-    <% }) %>
+<div class="big">
+  <div class="sm">
+    <form action="/voter/<%= voter._id %>/voting" method="post">
+
+
+      <h1 class="title">President</h1>
+      <div class="position">
+        <% candidate.president.forEach(elt => { %>
+        <div class="">
+          <h1><%= elt.firstName %> <%= elt.lastName %></h1>
+      
+          <img width="100px" src="<%= elt.coverImagePath %>" alt="pic" />
+    
+          <input class="form-check-input" type="radio" name="presidentOption" value="<%= elt._id %>" />
+          <label for="">Vote</label>
+        </div>
+        <% }) %>
+      </div>
+      <button class="btn btn-secondary" onclick="clearPresidentSelection()" type="button">Clear Selection</button>
+    
+      <hr>
+
+      <h1 class="title">Secretary</h1>
+      <div class="position">
+        <% candidate.secretary.forEach(elt => { %>
+        <div class="">
+          <h1><%= elt.firstName %> <%= elt.lastName %></h1>
+      
+          <img width="100px" src="<%= elt.coverImagePath %>" alt="pic" />
+    
+          <input class="form-check-input" type="radio" name="secretaryOption" value="<%= elt._id %>" />
+          <label for="">Vote</label>
+        </div>
+        <% }) %>
+      </div>
+      <button class="btn btn-secondary" type="button" onclick="clearSecretarySelection()">
+        Clear Selection
+      </button>
+      <br>
+      <button class="btn btn-primary my-3" type="submit">Finish Vote</button>
+    </form>
   </div>
-  <input type="button" onclick="clearPresidentSelection()">Clear Selection</button>
+</div>
 
-
-  <div class="secretary">
-    <% candidate.secretary.forEach(elt => { %>
-    <div class="">
-      <h1>Name: <%= elt.firstName %> <%= elt.lastName %></h1>
-      <h1>Position: <%= elt.position %></h1>
-      <img width="100px" src="<%= elt.coverImagePath %>" alt="pic" />
-
-      <input type="radio" name="secretaryOption" value="<%= elt._id %>" />
-    </div>
-    <% }) %>
-  </div>
-  <input type="button" onclick="clearSecretarySelection()">Clear Selection</button>
-  <button type="submit">Finish Vote</button>
-</form>
 
 <script src="/script.js"></script>

@@ -69,4 +69,142 @@ a {
   border: none;
 }
 
-/******* admin dashboard  *//*# sourceMappingURL=style.css.map */
+/******* navbar */
+.navbar .container-fluid a svg {
+  width: 30px;
+  height: 30px;
+}
+.navbar .container-fluid ul li a {
+  color: #333;
+  font-weight: 600;
+}
+.navbar .container-fluid ul li a i {
+  margin-right: 0.5em;
+  font-weight: bold;
+  font-size: 1.2em;
+}
+
+/******* dashboard */
+.dashboard {
+  position: relative;
+  top: 1em;
+  width: 90%;
+  margin: auto;
+}
+.dashboard .sm .intro {
+  display: flex;
+  align-items: center;
+  gap: 0.3em;
+}
+.dashboard .sm .intro p {
+  margin: 0;
+}
+.dashboard .sm .content {
+  min-height: 60vh;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  text-align: center;
+}
+.dashboard .sm .content .dates .date span h2 {
+  background: #5cb8c2;
+  margin-bottom: 1em;
+  padding: 0.5em;
+  border-radius: 0.3em;
+  color: #fff;
+  font-size: 1.2em;
+}
+.dashboard .sm .content .dates .date .set {
+  display: none;
+  margin-top: 1em;
+}
+.dashboard .sm .content .dates .date .set p {
+  font-weight: 500;
+  font-size: 1.2em;
+  margin-bottom: 0;
+}
+
+/******* add candidate */
+.addCandidate,
+.addAdmin {
+  position: relative;
+  top: 1em;
+  width: 90%;
+  margin: auto;
+}
+.addCandidate .sm span,
+.addAdmin .sm span {
+  text-align: center;
+  color: #b10000;
+  font-weight: 500;
+  font-size: 1.2em;
+}
+.addCandidate .sm form,
+.addAdmin .sm form {
+  margin: 1em auto;
+}
+.addCandidate .sm form div,
+.addAdmin .sm form div {
+  margin: 1em auto;
+}
+.addCandidate .sm form button,
+.addAdmin .sm form button {
+  margin: 1em auto;
+}
+
+/********* results  */
+/******* stats, result partial */
+.big {
+  min-height: 70vh;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+.big .sm {
+  text-align: center;
+}
+.big .sm .title {
+  text-align: center;
+  color: #b10000;
+}
+.big .sm h1 {
+  text-align: center;
+  color: #333;
+  font-weight: 500;
+  font-size: 1.2em;
+  margin: 1em auto;
+}
+.big .sm h1 p {
+  background: #5cb8c2;
+  color: #fff;
+  margin: 0;
+  font-size: 2em;
+  padding: 0.5em;
+  border-radius: 0.3em;
+}
+.big .sm .goBack {
+  width: -moz-fit-content;
+  width: fit-content;
+  margin: auto;
+  display: flex;
+  justify-content: center;
+}
+.big .sm .position {
+  width: 100%;
+  display: grid;
+  grid-template-columns: repeat(2, 1fr);
+  gap: 1em;
+  justify-content: space-between;
+}
+.big .sm .position div {
+  margin: 1em auto;
+}
+.big .sm .position div img {
+  width: 100%;
+  height: 150px;
+}
+.big .sm .position div h1 {
+  margin: 0;
+  color: #b10000;
+  font-size: 1em;
+}/*# sourceMappingURL=style.css.map */

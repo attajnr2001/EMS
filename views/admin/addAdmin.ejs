@@ -1,52 +1,62 @@
+<%- include("../partials/navbar.ejs") %>
 
-<h1>Add Admin</h1>
+<div class="addAdmin">
+  <div class="sm">
+    <span>Add Admin</span>
+    <form action="/admin/dashboard/<%= admin._id %>/viewElection" method="post">
+      <div>
+        <label for="firstName">First Name</label>
+        <input  class="form-control" type="text" id="firstName" name="firstName" required />
+      </div>
+
+      <div>
+        <label for="lastName">Last Name</label>
+        <input  class="form-control" type="text" id="lastName" name="lastName" required />
+      </div>
+
+      <div>
+        <label for="userName">Username</label>
+        <input  class="form-control" type="text" id="userName" name="userName" required />
+      </div>
+
+      <div>
+        <label for="password">Password</label>
+        <input  class="form-control" type="password" id="password" name="password" required />
+      </div>
+
+      <div>
+        <label for="Cpassword">Confirm Password</label>
+        <input  class="form-control" type="password" id="password" name="password2" required />
+      </div>
+
+      <div class="">
+        <label for="">Department</label>
+        <select name="department"  class="form-control" id="department">
+          <option value="ict">ICT</option>
+        </select>
+      </div>
 
 
-<form action="/admin/dashboard/<%= admin._id %>/viewElection" method="post">
-  <div>
-    <label for="firstName">First Name:</label>
-    <input type="text" id="firstName" name="firstName" required />
+      <div>
+        <label for="phone">Phone</label>
+        <input  class="form-control" type="tel" id="phone" name="phone" required />
+      </div>
+
+      <div>
+        <label for="dob">Date of Birth</label>
+        <input  class="form-control" type="date" id="dob" name="dob" required />
+      </div>
+
+      <div class="">
+        <label for="">Role</label>
+        <select name="role" id="role"  class="form-control">
+          <option value="admin">Admin</option>
+          <option value="Supervisor">Supervisor</option>
+        </select>
+      </div>
+
+
+      <button class="btn btn-primary " type="submit">Submit</button>
+    </form>
   </div>
-
-  <div>
-    <label for="lastName">Last Name:</label>
-    <input type="text" id="lastName" name="lastName" required />
-  </div>
-
-  <div>
-    <label for="userName">Username:</label>
-    <input type="text" id="userName" name="userName" required />
-  </div>
-
-  <div>
-    <label for="password">Password:</label>
-    <input type="password" id="password" name="password" required />
-  </div>
-
-  <div>
-    <label for="Cpassword">Confirm Password:</label>
-    <input type="password" id="password" name="password2" required />
-  </div>
-
-  <select name="department" id="department">
-   <option value="ict">ICT</option>
-  </select>
-
-  <div>
-    <label for="phone">Phone:</label>
-    <input type="tel" id="phone" name="phone" required />
-  </div>
-
-  <div>
-    <label for="dob">Date of Birth:</label>
-    <input type="date" id="dob" name="dob" required />
-  </div>
-
-  <select name="role" id="role">
-   <option value="admin">Admin</option>
-   <option value="Supervisor">Supervisor</option>
-  </select>
-
-  <button type="submit">Submit</button>
-</form>
-<a href="/admin/dashboard/<%= admin._id %>">Dashboard</a>
+</div>
