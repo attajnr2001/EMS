@@ -1,3 +1,10 @@
+/**
+ * This code defines the routes and handlers for the admin-related functionality in the application.
+ * It includes routes for login, dashboard, uploading voters, setting election date, deleting voters,
+ * adding candidates, and logging out.
+ */
+
+// Import required modules
 const express = require("express");
 const router = express.Router();
 const Admin = require("../models/Admin");
@@ -13,10 +20,20 @@ const { ensureAuthenticated } = require("../config/auth");
 const axios = require("axios");
 const imageMimeTypes = ["image/jpeg", "image/png", "image/gif"];
 
+
+/**
+ * Route: GET /
+ * Description: Renders the welcome page
+ */
 router.get("/", (req, res) => {
   res.render("welcome", { title: "Welcome EMS" });
 });
 
+
+/**
+ * Route: POST /admin/login
+ * Description: Handles admin login functionality
+ */
 router.post("/admin/login", async (req, res, next) => {
   const loginErrors = [];
   try {
@@ -37,6 +54,12 @@ router.post("/admin/login", async (req, res, next) => {
   }
 });
 
+
+
+/**
+ * Route: POST /admin/dashboard/:_id/uploadVoters
+ * Description: Handles uploading voters from a CSV file
+ */
 router.post(
   "/admin/dashboard/:_id/uploadVoters",
   upload.single("csv-file"),
@@ -67,10 +90,19 @@ router.post(
   }
 );
 
+/**
+ * Route: GET /admin/login
+ * Description: Renders the admin login page
+ */
 router.get("/admin/login", (req, res) => {
   res.render("admin/login", { title: "Admin login page" });
 });
 
+
+/**
+ * Route: GET /admin/dashboard/:_id
+ * Description: Renders the admin dashboard page
+ */
 router.get("/admin/dashboard/:_id", ensureAuthenticated, async (req, res) => {
   const admin = await Admin.findOne({ _id: req.params._id });
   const _admin = await Admin.findOne({ role: "Supervisor" });
@@ -82,6 +114,10 @@ router.get("/admin/dashboard/:_id", ensureAuthenticated, async (req, res) => {
   });
 });
 
+/**
+ * Logout route for the admin user.
+ * Clears the session and redirects to the login page.
+ */
 router.get("/logout", (req, res) => {
   req.logout((err) => {
     if (err) throw err;
@@ -89,6 +125,13 @@ router.get("/logout", (req, res) => {
   res.redirect("/admin/login");
 });
 
+/**
+ * Route for updating the election date and time in the admin dashboard.
+ * Only accessible for admin users with a role of "Supervisor".
+ * Updates the electionEndDate and setTime fields in the Admin model based on the request body.
+ * Redirects to the admin dashboard with a success message if the update is successful.
+ * Redirects to the admin dashboard with an error message if the user is not authorized or an error occurs.
+ */
 router.post("/admin/dashboard/:_id", ensureAuthenticated, async (req, res) => {
   const id = req.params._id;
   const admin = await Admin.findOne({ _id: id });
@@ -118,6 +161,14 @@ router.post("/admin/dashboard/:_id", ensureAuthenticated, async (req, res) => {
   }
 });
 
+
+/**
+ * Route for deleting all voters and candidates in the admin dashboard.
+ * Only accessible for admin users with a role of "Supervisor".
+ * Deletes all documents in the Candidate and Voter models.
+ * Redirects to the admin dashboard after deleting the documents.
+ * Returns a JSON response with an error message if the user is not authorized or an error occurs.
+ */
 router.post("/admin/dashboard/:_id/deleteVoters", ensureAuthenticated, async (req, res) => {
   const id = req.params._id;
   const admin = await Admin.findOne({ _id: id });
@@ -136,6 +187,15 @@ router.post("/admin/dashboard/:_id/deleteVoters", ensureAuthenticated, async (re
   }
 });
 
+
+/**
+ * Route for adding a candidate in the admin dashboard.
+ * Displays a form for adding a new candidate and renders the "admin/newCandidate" view.
+ * Only accessible for authenticated admin users.
+ * 
+ * GET request:
+ * Fetches the admin user, candidates, and voters from the database and renders the "admin/newCandidate" view.
+ */
 router.get(
   "/admin/dashboard/:_id/addCandidate",
   ensureAuthenticated,
@@ -158,6 +218,14 @@ router.get(
   }
 );
 
+
+/* POST request:
+* Creates a new candidate based on the form data submitted.
+* Saves the candidate to the database.
+* If successful, a success flash message is set and the user is redirected to the "/admin/dashboard/:_id/addCandidate" page.
+* If an error occurs during the save operation, an error flash message is set and the user is redirected to the same page.
+* If the candidate is already registered, a specific error flash message is set.
+*/
 router.post(
   "/admin/dashboard/:_id/addCandidate",
   ensureAuthenticated,
@@ -197,6 +265,16 @@ router.post(
   }
 );
 
+
+/**
+ * Route for viewing candidates in the admin dashboard.
+ * Displays the candidates for the "president" and "secretary" positions.
+ * Only accessible for authenticated admin users.
+ * 
+ * GET request:
+ * Fetches the admin user, candidates for "president" and "secretary" positions from the database,
+ * and renders the "admin/viewCandidate" view with the retrieved data.
+ */
 router.get(
   "/admin/dashboard/:_id/viewCandidate",
   ensureAuthenticated,
@@ -217,7 +295,14 @@ router.get(
     }
   }
 );
-
+/**
+ * Route for adding an admin user in the admin dashboard.
+ * Only accessible for authenticated admin users.
+ * 
+ * GET request:
+ * Fetches the admin user with the specified ID from the database
+ * and renders the "admin/addAdmin" view with the retrieved data.
+ */
 router.get(
   "/admin/dashboard/:_id/addAdmin",
   ensureAuthenticated,
@@ -234,6 +319,18 @@ router.get(
     }
   }
 );
+
+
+/**
+ * Route for creating an admin user in the admin dashboard.
+ * Only accessible for authenticated admin users.
+ * 
+ * POST request:
+ * Retrieves the admin user details from the request body,
+ * creates a new admin user with the provided data, and saves
+ * it to the database. Redirects to the admin dashboard page
+ * for the specified admin user ID upon successful creation.
+ */
 
 router.post(
   "/admin/dashboard/:_id/viewElection",
@@ -280,6 +377,17 @@ router.post(
   }
 );
 
+/* Route for removing all candidates and voters from the admin dashboard.
+* Only accessible for authenticated admin users.
+* 
+* POST request:
+* Retrieves the admin user ID from the request parameters,
+* finds the corresponding admin user in the database, and then
+* deletes all candidate and voter documents from the database.
+* Finally, redirects to the admin dashboard page for the specified
+* admin user ID after the deletion is complete.
+*/
+
 router.post(
   "/admin/dashboard/:_id/removeAll",
   ensureAuthenticated,
@@ -303,6 +411,13 @@ router.post(
     }
   }
 );
+
+/**
+ * Function for saving the cover image of a book.
+ * 
+ * @param {object} book - The book object to save the cover image for.
+ * @param {string} coverEncoded - The encoded cover image data.
+ */
 
 function saveCover(book, coverEncoded) {
   if (coverEncoded == null) return;

@@ -1,4 +1,13 @@
+/**
+ * This code sets up an Express.js web application with various middleware and configurations.
+ * It connects to a MongoDB database using Mongoose and initializes Passport for authentication.
+ * The application listens on a specified port for incoming requests.
+ */
+
+// Load environment variables from a .env file
 require("dotenv").config();
+
+// Import required modules
 const express = require("express");
 const flash = require("connect-flash");
 const session = require("express-session");
@@ -8,11 +17,14 @@ const mongoose = require("mongoose");
 const passport = require("passport");
 const app = express();
 
-
+// Configure passport authentication
 require("./config/passport")(passport);
+
+// Set view engine and layout
 app.set("view engine", "ejs");
 app.set("layout", "./layouts/main.ejs");
 
+// Connect to MongoDB database
 const db = process.env.MongoUri;
 mongoose
   .connect(db, {
@@ -22,11 +34,12 @@ mongoose
   .then(() => console.log("Mongo connected"))
   .catch((err) => console.log(err));
 
+// Middleware and static file serving
 app.use(express.urlencoded({ extended: true, limit: "10mb" }));
 app.use(layouts);
-
 app.use(express.static("public"));
 
+// Configure session middleware
 app.use(
   session({
     secret: "secret",
@@ -35,11 +48,14 @@ app.use(
   })
 );
 
+// Initialize Passport and session middleware
 app.use(passport.initialize());
 app.use(passport.session());
 
+// Flash messages middleware
 app.use(flash());
 
+// Set local variables for flash messages
 app.use((req, res, next) => {
   res.locals.success_msg = req.flash("success_msg");
   res.locals.error_msg = req.flash("error_msg");
@@ -58,10 +74,12 @@ app.use((req, res, next) => {
   next();
 });
 
+// Route handling
 app.use("/", require("./server/adminRoutes"));
 app.use("/", require("./server/voterRoutes"));
 app.use("/", require("./server/electionRoutes"));
 
+// Start the server and listen on the specified port
 app.listen(port, () => {
   console.log("running on port", port);
 });

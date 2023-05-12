@@ -1,3 +1,8 @@
+/**
+ * Express Router for handling routes related to election statistics and results.
+ * @module electionRoutes
+ */
+
 const express = require("express");
 const router = express.Router();
 const Admin = require("../models/Admin");
@@ -5,7 +10,9 @@ const Voter = require("../models/Voter");
 const Candidate = require("../models/Candidate");
 const { ensureAuthenticated } = require("../config/auth");
 
-
+/**
+ * Route for retrieving election statistics.
+ */
 router.get("/election/stats", ensureAuthenticated, async (req, res) => {
   try {
     const id = req.params._id;
@@ -25,27 +32,25 @@ router.get("/election/stats", ensureAuthenticated, async (req, res) => {
   }
 });
 
+/**
+ * Route for retrieving election results.
+ */
+router.get("/election/results", ensureAuthenticated, async (req, res) => {
+  try {
+    const id = req.params._id;
+    const president = await Candidate.find({ position: "president" });
+    const secretary = await Candidate.find({ position: "secretary" });
 
-router.get(
-   "/election/results",
-   ensureAuthenticated,
-   async (req, res) => {
-     try {
-       const id = req.params._id;
-       const president = await Candidate.find({ position: "president" });
-       const secretary = await Candidate.find({ position: "secretary" });
- 
-       const candidates = { president, secretary };
-       const admin = await Admin.findOne({ role: "Supervisor" });
-       res.render("election/results", {
-         title: "Node App View Election",
-         admin: admin,
-         candidates: candidates,
-       });
-     } catch (error) {
-       console.log(error);
-     }
-   }
- );
+    const candidates = { president, secretary };
+    const admin = await Admin.findOne({ role: "Supervisor" });
+    res.render("election/results", {
+      title: "Node App View Election",
+      admin: admin,
+      candidates: candidates,
+    });
+  } catch (error) {
+    console.log(error);
+  }
+});
 
 module.exports = router;
