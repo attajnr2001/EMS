@@ -101,8 +101,11 @@ router.post("/admin/dashboard/:_id", ensureAuthenticated, async (req, res) => {
     if (admin.role == "Supervisor") {
       const result = await Admin.updateOne(
         { _id: id },
+        { ElectionEndDate: ElectionEndDate },
+      );
+      const result2 = await Admin.updateOne(
+        { _id: id },
         { setTime: setTime },
-        { ElectionEndDate: ElectionEndDate }
       );
       req.flash("setTimeSuccess", "Date has been changed");
       res.redirect("/admin/dashboard/" + id);
@@ -110,19 +113,24 @@ router.post("/admin/dashboard/:_id", ensureAuthenticated, async (req, res) => {
       req.flash("setTimeError", "Sorry You cannot set Date");
       res.redirect("/admin/dashboard/" + id);
     }
+  } catch (error) {
+    console.log(error);
+  }
+});
 
-    //  // get current date and time from worldtimeapi
-    //  const response = await axios.get(
-    //    "http://worldtimeapi.org/api/timezone/Africa/Accra"
-    //  );
-    //  const { datetime } = response.data;
+router.post("/admin/dashboard/:_id/deleteVoters", ensureAuthenticated, async (req, res) => {
+  const id = req.params._id;
+  const admin = await Admin.findOne({ _id: id });
 
-    //  // log whether the set election date matches the current date
-    //  console.log(
-    //    `Current date and time: ${
-    //      datetime.split("T")[0] == setTime.split("T")[0]
-    //    }`
-    //  );
+  try {
+    if(admin.role == "Supervisor"){
+      await Candidate.deleteMany({})
+      await Voter.deleteMany({});
+
+      res.redirect(`/admin/dashboard/${id}`);
+    }else{
+      res.json("cant delete voters")
+    }
   } catch (error) {
     console.log(error);
   }

@@ -22,7 +22,7 @@ router.post("/voter/login", async (req, res, next) => {
     })(req, res, next);
   } catch (error) {
     console.log(error);
-    res.json({ msg: "error 404" });
+    res.redirect("/voter/login");
   }
 });
 
@@ -34,19 +34,6 @@ router.get("/voter/dashboard/:_id", ensureAuthenticated, async (req, res) => {
     const admin = await Admin.find({});
     const _admin = await Admin.findOne({ role: "Supervisor" });
 
-    //      // get current date and time from worldtimeapi
-    //  const response = await axios.get(
-    //    "http://worldtimeapi.org/api/timezone/Africa/Accra"
-    //  );
-    //  const { datetime } = response.data;
-
-    //  // log whether the set election date matches the current date
-    //  console.log(
-    //    `Current date and time: ${
-    //      datetime.split("T")[0] == setTime.split("T")[0]
-    //    }`
-    //  );
-
     res.render("voter/dashboard", {
       title: "EMS Voting",
       admin: admin,
@@ -54,7 +41,8 @@ router.get("/voter/dashboard/:_id", ensureAuthenticated, async (req, res) => {
       voter: voter,
     });
   } catch (error) {
-    console.log(error);
+    req.flash("noVoterFound", "No User found");
+    res.redirect("/voter/login")
   }
 });
 
@@ -65,13 +53,35 @@ router.get("/voter/:_id/voting", ensureAuthenticated, async (req, res) => {
     const voter = await Voter.findOne({ _id: id });
     const president = await Candidate.find({ position: "president" });
     const secretary = await Candidate.find({ position: "secretary" });
-
+    const admin = await Admin.findOne({ role: "Supervisor" });
+    const setTime = admin.setTime;
+    const endTime = admin.ElectionEndDate;
     const candidate = { president, secretary };
-    res.render("voter/voting", {
-      title: "Voting Voting",
-      voter: voter,
-      candidate: candidate,
-    });
+
+    const response = await axios.get(
+      "http://worldtimeapi.org/api/timezone/Africa/Accra"
+    );
+
+    const { datetime } = response.data;
+
+    const setTimeDate = new Date(setTime);
+    const endTimeDate = new Date(endTime);
+    const currentDateTime = new Date(datetime);
+
+    let canVote1 = setTimeDate.getTime() <= currentDateTime.getTime();
+    let canVote2 = endTimeDate.getTime() >= currentDateTime.getTime();
+
+    if (canVote1 && canVote2) {
+      res.render("voter/voting", {
+        title: "Voting Voting",
+        voter: voter,
+        candidate: candidate,
+        admin: admin,
+      });
+    } else {
+      req.flash("cantVote", "Election time no reach");
+      res.redirect(`/voter/dashboard/${id}`);
+    }
   } catch (error) {
     console.log(error);
   }

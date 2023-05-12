@@ -150,8 +150,8 @@
     <h3 class="heading">Voter Login</h3>
 
     <div class="form">
+      <%- include("../partials/messages.ejs") %>
       <form action="/voter/login" method="post">
-        <%- include("../partials/messages.ejs") %>
         <div class="form-group mb-3">
           <label for="exampleInputEmail1">Username</label>
           <input

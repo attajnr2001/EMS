@@ -19,7 +19,9 @@
     aria-label="Close"
   ></button>
 </div>
-<% }) %> <% } %> 
+<% }) %>
+
+<% } %> 
 <% if (success_msg != "") { %>
 <div class="alert alert-success alert-dismissible fade show" role="alert">
   <%= success_msg %>
@@ -140,9 +142,35 @@
   ></button>
 </div>
 <% } %>
+
+
 <% if (createCandidateSuccess != "") { %>
 <div class="alert alert-success alert-dismissible fade show" role="alert">
   <%= createCandidateSuccess %>
+  <button
+    type="button"
+    class="btn-close"
+    data-bs-dismiss="alert"
+    aria-label="Close"
+  ></button>
+</div>
+<% } %>
+
+<% if (cantVote != "") { %>
+<div class="alert alert-info alert-dismissible fade show" role="alert">
+  <%= cantVote %>
+  <button
+    type="button"
+    class="btn-close"
+    data-bs-dismiss="alert"
+    aria-label="Close"
+  ></button>
+</div>
+<% } %>
+
+<% if (noVoterFound != "") { %>
+<div class="alert alert-danger alert-dismissible fade show" role="alert">
+  <%= noVoterFound %>
   <button
     type="button"
     class="btn-close"

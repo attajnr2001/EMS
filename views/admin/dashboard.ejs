@@ -24,7 +24,15 @@
             <h2 class="endDate"><%= _admin.ElectionEndDate.toUTCString() %></h2>
           </span>
 
-          <button onclick="showSetDate()" class="showDate btn btn-sm btn-primary">Change Date</button>
+          <button
+            type="button"
+            data-bs-toggle="modal"
+            data-bs-target="#exampleModal"
+            onclick="showSetDate()"
+            class="showDate btn btn-sm btn-primary"
+          >
+            Change Date
+          </button>
 
           <div class="set">
             <p>Set Date</p>
@@ -55,4 +63,26 @@
 
 <div class="dashboard" style="display: none">
   <div class="setDate"></div>
+</div>
+
+
+<div class="modal fade" id="exampleModal" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
+  <div class="modal-dialog">
+    <div class="modal-content">
+      <div class="modal-header">
+        <h1 class="modal-title fs-5" id="exampleModalLabel">Warning</h1>
+        <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+      </div>
+      <div class="modal-body">
+        <p>Changing the election time might mean new Election, which means you might want to remove old voters and upload new voters</p>
+        <p>Press Yes to remove all voters and upload new one</p>
+        <p>Press close if there are no voters</p>
+        <p>NB: Don't forget to upload voters list</p>
+        <form action="/admin/dashboard/<%= admin._id %>/deleteVoters" method="post">
+        <button class="btn btn-primary" type="submit">Yes</button>
+        <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button>
+        </form>
+      </div>
+    </div>
+  </div>
 </div>
